@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>[gsap/lenis] ❍ Layout Explorations with Gsap, Flip, Lenis and ScrollTrigger N°2</title>
+  <link rel="stylesheet" href="https://public.codepenassets.com/css/normalize-5.0.0.min.css">
+<link rel="stylesheet" href="./style.css">
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<!-- Header and Navigation -->
+<header class="site-header">
+  <div class="grid-container">
+    <!-- Logo with circles only -->
+    <div class="logo-container">
+      <div class="logo-circles">
+        <div class="circle circle-1"></div>
+        <div class="circle circle-2"></div>
+      </div>
+    </div>
+
+    <nav class="main-nav">
+      <ul>
+        <li><a href="#" class="active">SELECTED WORKS<sup>10</sup></a></li>
+        <li><a href="#">ABOUT</a></li>
+        <li><a href="#">JOURNAL</a></li>
+      </ul>
+    </nav>
+
+    <div class="contact-link">
+      <a href="mailto:hi@filip.fyi">+GET IN TOUCH</a>
+    </div>
+  </div>
+</header>
+
+<div class="container">
+  <div class="grid-container">
+    <!-- Header Logo -->
+    <div class="header-logo">
+      <svg viewBox="0 0 67 19" xmlns="http://www.w3.org/2000/svg">
+        <g fill="var(--warm-off-white)">
+          <path class="logo-path" d="m56.7888 18c0-5.304 2.256-10.72798 5.208-13.24798v-.048h-7.848v-3.288h12.168v3.048c-3.768 3.048-5.208 8.42398-5.208 13.53598z" />
+          <path class="logo-path" d="m39.4973 18v-17.159973h8.088c3.816 0 6.12 1.776003 6.12 4.896003 0 2.4-1.344 3.816-3.48 4.29597v.048c4.296.744 2.736 7.392 3.72 7.68v.24h-4.488c-.84-.72.72-5.976-2.952-5.976h-2.688v5.976zm4.32-9.50397h2.928c1.728 0 2.64-.624 2.64-2.064s-.912-2.064-2.64-2.064h-2.928z" />
+          <path class="logo-path" d="m33.022 18v-17.159973h4.32v17.159973z" />
+          <path class="logo-path" d="m24.173 18.384c-4.968 0-7.296-3.72-7.296-8.66402 0-4.944 2.328-8.688 7.296-8.688s7.272 3.744 7.272 8.688c0 4.94402-2.304 8.66402-7.272 8.66402zm-3.048-8.66402c0 3.00002.672 5.30402 3.048 5.30402s3.024-2.304 3.024-5.30402c0-3-.648-5.328-3.048-5.328s-3.048 2.328-3.048 5.328z" />
+          <path class="logo-path" d="m.594849 18v-17.159973h4.320001l5.99995 10.199973h.048v-10.199973h4.3201v17.159973h-4.3201l-5.99995-10.19997h-.048v10.19997z" />
+        </g>
+      </svg>
+    </div>
+
+    <div class="header">
+      <div class="header-title">
+        <h1>SELECTED WORKS<sup>10</sup></h1>
+      </div>
+      <div class="view-toggle">
+        <button class="toggle-btn active" data-view="list">List</button>
+        <button class="toggle-btn" data-view="grid">Grid</button>
+      </div>
+    </div>
+
+    <div id="projects-container" class="projects-container list-view"></div>
+  </div>
+</div>
+
+<!-- Popup Overlay for Image Preview -->
+<div id="popup-overlay">
+  <div class="popup-content">
+    <img class="popup-image" src="/placeholder.svg" alt="Popup Image">
+  </div>
+</div>
+
+<!-- Footer Section -->
+<footer class="footer">
+  <div class="footer-content">
+    <div class="footer-header">
+      <h2>
+        <span class="light-text">Find the essence in simplicity,</span>
+        <span class="bold-text">Create without boundaries.</span>
+      </h2>
+    </div>
+
+    <div class="footer-grid">
+      <div class="footer-column">
+        <div class="footer-section">
+          <h3>Contact</h3>
+          <p><a href="mailto:hi@filip.fyi">hi@filip.fyi</a></p>
+          <p><a href="tel:+381631943959">+381.63.TARA.959</a></p>
+        </div>
+
+        <div class="footer-section">
+          <h3>&nbsp;</h3>
+          <p>&nbsp;</p>
+        </div>
+      </div>
+
+      <div class="footer-column">
+        <div class="footer-section">
+          <p><a href="#">Sound</a></p>
+          <p><a href="#">Vision</a></p>
+          <p><a href="#">Feeling</a></p>
+        </div>
+
+        <div class="footer-section">
+          <h3>Fragments</h3>
+          <p>Receive Signals</p>
+        </div>
+      </div>
+
+      <div class="footer-column">
+        <div class="footer-section">
+          <p><a href="#">Works<sup>(10)</sup></a></p>
+          <p><a href="#">About</a></p>
+          <p><a href="#">Journal</a></p>
+        </div>
+
+        <div class="footer-section">
+          <h3>Location</h3>
+          <p>43.9359° N, 19.4959° E</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer Logo -->
+    <div class="footer-logo">
+      <svg viewBox="0 0 67 19" xmlns="http://www.w3.org/2000/svg">
+        <g fill="var(--warm-off-black)">
+          <path class="logo-path" d="m56.7888 18c0-5.304 2.256-10.72798 5.208-13.24798v-.048h-7.848v-3.288h12.168v3.048c-3.768 3.048-5.208 8.42398-5.208 13.53598z" />
+          <path class="logo-path" d="m39.4973 18v-17.159973h8.088c3.816 0 6.12 1.776003 6.12 4.896003 0 2.4-1.344 3.816-3.48 4.29597v.048c4.296.744 2.736 7.392 3.72 7.68v.24h-4.488c-.84-.72.72-5.976-2.952-5.976h-2.688v5.976zm4.32-9.50397h2.928c1.728 0 2.64-.624 2.64-2.064s-.912-2.064-2.64-2.064h-2.928z" />
+          <path class="logo-path" d="m33.022 18v-17.159973h4.32v17.159973z" />
+          <path class="logo-path" d="m24.173 18.384c-4.968 0-7.296-3.72-7.296-8.66402 0-4.944 2.328-8.688 7.296-8.688s7.272 3.744 7.272 8.688c0 4.94402-2.304 8.66402-7.272 8.66402zm-3.048-8.66402c0 3.00002.672 5.30402 3.048 5.30402s3.024-2.304 3.024-5.30402c0-3-.648-5.328-3.048-5.328s-3.048 2.328-3.048 5.328z" />
+          <path class="logo-path" d="m.594849 18v-17.159973h4.320001l5.99995 10.199973h.048v-10.199973h4.3201v17.159973h-4.3201l-5.99995-10.19997h-.048v10.19997z" />
+        </g>
+      </svg>
+    </div>
+  </div>
+</footer>
+<!-- partial -->
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.7/gsap.min.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.7/ScrollTrigger.min.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.7/Flip.min.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.7/CustomEase.min.js'></script>
+<script src='https://cdn.jsdelivr.net/gh/studio-freight/lenis@latest/bundled/lenis.js'></script><script  src="./script.js"></script>
+
+</body>
+</html>

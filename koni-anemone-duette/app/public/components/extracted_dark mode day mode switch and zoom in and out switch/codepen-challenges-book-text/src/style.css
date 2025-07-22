@@ -1,0 +1,88 @@
+@import url("https://fonts.googleapis.com/css2?family=Niconne&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Ballet&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Lora:400,400i,700");
+
+:root {
+	--fs: 1em;
+	--lh: 1.8;
+}
+
+.light-theme {
+	--bg: #eae2cf;
+	--tc: #3b3b3b;
+}
+
+.dark-theme {
+	--bg: #3b3b3b;
+	--tc: #eae2cf;
+}
+
+body {
+	background-color: var(--bg);
+	color: var(--tc);
+}
+
+h1 {
+	margin-bottom: 0;
+	font-size: clamp(3em, 10vw, 5em);
+	font-family: "Niconne", cursive;
+}
+
+h2,
+h3 {
+	margin-top: 0;
+	font-family: "Lora", serif;
+}
+.options {
+	padding: 10px;
+}
+
+.options button {
+	background: none;
+	border: 0;
+	color: var(--tc);
+	opacity: 0.8;
+}
+
+.options button:hover {
+	opacity: 1;
+}
+
+article {
+	max-width: 65ch;
+	margin: 0 auto;
+	padding: 0 1.6rem;
+	font-size: var(--fs);
+}
+
+article header {
+	text-align: center;
+	margin-bottom: 4.5rem;
+	border-bottom: 2px solid var(--tc);
+}
+
+article section {
+	font-family: "Lora", serif;
+}
+
+article section::first-letter {
+	display: inline-block;
+	float: left;
+	margin: -0.3em 0.1em -0.2em 0;
+	padding: 0.1em;
+	font-family: "Ballet", cursive;
+	font-size: 3em;
+	line-height: 1;
+	vertical-align: top;
+	text-shadow: 1px 1px 0 #000a;
+}
+
+article section::first-line {
+	font-weight: bold;
+	margin-bottom: 1.2rem;
+}
+
+p {
+	margin-bottom: 1.4em;
+	line-height: var(--lh);
+}

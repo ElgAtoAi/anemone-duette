@@ -1,0 +1,710 @@
+@font-face {
+  src: url("https://fonts.cdnfonts.com/css/pp-neue-montreal") format("woff2");
+  font-family: "PP Neue Montreal", sans-serif;
+  font-weight: 400;
+}
+
+*,
+*:before,
+*:after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: calc(100vw / 1512 * 10);
+}
+
+/* Lenis smooth scrolling styles */
+html.lenis {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  -ms-scroll-chaining: none;
+      overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis.lenis-scrolling iframe {
+  pointer-events: none;
+}
+
+:root {
+  --warm-off-black: #1a1917;
+  --warm-off-white: #f8f5f2;
+}
+
+body {
+  font-family: "PP Neue Montreal", sans-serif;
+  font-weight: 700;
+  font-size: 1.8rem;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+  background-color: var(--warm-off-black);
+  text-transform: uppercase;
+  letter-spacing: -0.03em;
+  color: var(--warm-off-white);
+  position: relative;
+  margin: 0;
+  padding: 0;
+}
+
+/* Animated noise effect */
+body::before {
+  content: "";
+  position: fixed;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: transparent
+    url("http://assets.iceable.com/img/noise-transparent.png") repeat 0 0;
+  background-size: 300px 300px;
+  -webkit-animation: noise-animation 0.3s steps(5) infinite;
+          animation: noise-animation 0.3s steps(5) infinite;
+  opacity: 0.9;
+  will-change: transform;
+  z-index: 100;
+  pointer-events: none;
+}
+
+@-webkit-keyframes noise-animation {
+  0% {
+    transform: translate(0, 0);
+  }
+
+  10% {
+    transform: translate(-2%, -3%);
+  }
+
+  20% {
+    transform: translate(-4%, 2%);
+  }
+
+  30% {
+    transform: translate(2%, -4%);
+  }
+
+  40% {
+    transform: translate(-2%, 5%);
+  }
+
+  50% {
+    transform: translate(-4%, 2%);
+  }
+
+  60% {
+    transform: translate(3%, 0);
+  }
+
+  70% {
+    transform: translate(0, 3%);
+  }
+
+  80% {
+    transform: translate(-3%, 0);
+  }
+
+  90% {
+    transform: translate(2%, 2%);
+  }
+
+  100% {
+    transform: translate(1%, 0);
+  }
+}
+
+@keyframes noise-animation {
+  0% {
+    transform: translate(0, 0);
+  }
+
+  10% {
+    transform: translate(-2%, -3%);
+  }
+
+  20% {
+    transform: translate(-4%, 2%);
+  }
+
+  30% {
+    transform: translate(2%, -4%);
+  }
+
+  40% {
+    transform: translate(-2%, 5%);
+  }
+
+  50% {
+    transform: translate(-4%, 2%);
+  }
+
+  60% {
+    transform: translate(3%, 0);
+  }
+
+  70% {
+    transform: translate(0, 3%);
+  }
+
+  80% {
+    transform: translate(-3%, 0);
+  }
+
+  90% {
+    transform: translate(2%, 2%);
+  }
+
+  100% {
+    transform: translate(1%, 0);
+  }
+}
+
+/* Dust/Scratches background effect for the entire site */
+body::after {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("https://img.freepik.com/premium-photo/white-dust-scratches-black-background_279525-2.jpg?w=640");
+  background-repeat: repeat;
+  opacity: 0.5;
+  mix-blend-mode: overlay;
+  pointer-events: none;
+  z-index: 999;
+}
+
+/* Site Header and Navigation */
+.site-header {
+  padding: 1.5rem 0;
+  width: 100%;
+  z-index: 100;
+  background-color: var(--warm-off-black);
+}
+
+.site-header .grid-container {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 1rem;
+  align-items: center;
+  padding: 0 2rem;
+}
+
+.logo-container {
+  grid-column: 1 / 3;
+  position: relative;
+  display: flex;
+  align-items: center;
+  height: 2rem;
+}
+
+/* Logo circles */
+.logo-circles {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.circle {
+  position: absolute;
+  border-radius: 50%;
+  transition: transform 0.5s cubic-bezier(0.445, 0.05, 0.55, 0.95);
+  width: 1.8rem;
+  height: 1.8rem;
+  background-color: var(--warm-off-white); /* Same color for both circles */
+  top: 50%;
+}
+
+.circle-1 {
+  left: 0;
+  transform: translate(0, -50%);
+}
+
+.circle-2 {
+  left: 1rem;
+  transform: translate(0, -50%);
+  mix-blend-mode: exclusion;
+}
+
+.logo-container:hover .circle-1 {
+  transform: translate(-0.5rem, -50%);
+}
+
+.logo-container:hover .circle-2 {
+  transform: translate(0.5rem, -50%);
+}
+
+.main-nav {
+  grid-column: 4 / 6;
+}
+
+.main-nav ul {
+  display: flex;
+  list-style: none;
+  gap: 2rem;
+}
+
+.main-nav a {
+  color: var(--warm-off-white);
+  text-decoration: none;
+  font-size: 1.4rem;
+  transition: opacity 0.3s ease;
+}
+
+.main-nav a:not(.active) {
+  opacity: 0.5;
+}
+
+.main-nav a:hover {
+  opacity: 1;
+}
+
+.main-nav a.active {
+  position: relative;
+}
+
+.main-nav a sup {
+  font-size: 0.8rem;
+  vertical-align: super;
+}
+
+.contact-link {
+  grid-column: 9 / 13;
+  text-align: right;
+}
+
+.contact-link a {
+  color: var(--warm-off-white);
+  text-decoration: none;
+  font-size: 1.4rem;
+  transition: opacity 0.3s ease;
+}
+
+.contact-link a:hover {
+  opacity: 0.7;
+}
+
+/* 12-column grid layout */
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 1rem;
+  padding: 0 2rem;
+  width: 100%;
+  max-width: 100%;
+  min-height: 100%;
+  height: auto;
+}
+
+.header {
+  grid-column: 1 / -1;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 4rem;
+}
+
+h1 {
+  font-size: 4rem;
+  text-transform: uppercase;
+}
+
+h1 sup {
+  font-size: 2rem;
+  vertical-align: super;
+  margin-left: 0.5rem;
+}
+
+/* Header Logo */
+.header-logo {
+  grid-column: 1 / -1;
+  width: 100%;
+  margin-bottom: 4rem;
+  opacity: 1;
+  min-height: 60vh;
+  max-height: 60vh;
+  display: flex;
+  align-items: flex-start;
+}
+
+.header-logo svg {
+  width: 100%;
+  height: auto;
+}
+
+/* Add this to ensure the logo paths are visible initially but clipped */
+.logo-path {
+  -webkit-clip-path: inset(100% 0 0 0);
+          clip-path: inset(100% 0 0 0); /* Initially hidden from bottom */
+}
+
+.projects-container {
+  grid-column: 1 / -1;
+  position: relative;
+  min-height: 100vh;
+  margin-bottom: 20vh;
+}
+
+.container {
+  width: 100%;
+  margin: 0 auto;
+  padding: 0;
+  height: 100%;
+  overflow-y: auto;
+}
+
+.view-toggle {
+  display: flex;
+  gap: 2rem;
+}
+
+.toggle-btn {
+  background: none;
+  border: none;
+  color: rgba(248, 245, 242, 0.5);
+  padding: 0.8rem 0;
+  font-family: inherit;
+  font-size: 1.4rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.toggle-btn.active {
+  color: var(--warm-off-white);
+}
+
+/* Project Item - Shared Styles */
+.project-item {
+  position: relative;
+  will-change: transform, opacity;
+  overflow: visible;
+  cursor: pointer;
+}
+
+/* List View Styles */
+.projects-container.list-view {
+  display: flex;
+  flex-direction: column;
+}
+
+.list-view .project-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 2rem 0;
+  border-bottom: 1px solid rgba(248, 245, 242, 0.1);
+  position: relative;
+  overflow: hidden;
+}
+
+/* List view hover animation with exclusion blend mode */
+.list-view .project-item::before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 0;
+  background-color: var(--warm-off-white);
+  z-index: 1;
+  pointer-events: none;
+  transition: height 0.2s cubic-bezier(0.445, 0.05, 0.55, 0.95) 0s;
+}
+
+.list-view .project-item:hover::before {
+  height: 100%;
+}
+
+.list-view .project-item:not(:hover)::before {
+  transition-duration: 0.8s;
+}
+
+.list-view .project-title,
+.list-view .project-year {
+  font-size: 1.8rem;
+  position: relative;
+  z-index: 2;
+  mix-blend-mode: exclusion;
+}
+
+/* In list view the image container is hidden by default */
+.list-view .project-image-container {
+  display: none;
+  visibility: hidden;
+}
+
+/* When transitioning (grid -> list) we briefly show it */
+.list-view .project-image-container.transitioning-to-list {
+  display: block !important;
+  visibility: visible !important;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+
+.list-view .project-image-container.transitioning-to-list .project-image {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+/* Grid View Styles */
+.projects-container.grid-view {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 2rem;
+}
+
+.grid-view .project-item {
+  display: flex;
+  flex-direction: column;
+}
+
+.grid-view .project-image-container {
+  width: 100%;
+  position: relative;
+  margin-bottom: 1rem;
+  display: block;
+  overflow: hidden;
+}
+
+/* Alternating image heights */
+.grid-view .project-item:nth-child(odd) .project-image-container {
+  aspect-ratio: 1 / 1;
+}
+
+.grid-view .project-item:nth-child(even) .project-image-container {
+  aspect-ratio: 1 / 1.5;
+}
+
+.grid-view .project-image {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.grid-view .project-title {
+  font-size: 1.6rem;
+  margin-bottom: 0.2rem;
+}
+
+.grid-view .project-year {
+  font-size: 1.4rem;
+  color: rgba(248, 245, 242, 0.7);
+}
+
+#popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(26, 25, 23, 0.9);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  pointer-events: none;
+}
+
+#popup-overlay .popup-content {
+  width: 80vw;
+  max-width: 1280px;
+  aspect-ratio: 16 / 9;
+  background: var(--warm-off-black);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  position: relative;
+}
+
+#popup-overlay .popup-image {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+/* Footer Styles */
+.footer {
+  background-color: var(--warm-off-white);
+  color: var(--warm-off-black);
+  padding: 8rem 2rem;
+  min-height: 75vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+}
+
+.footer-content {
+  width: 100%;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+.footer-header {
+  margin-bottom: 8rem;
+}
+
+.footer-header h2 {
+  font-size: 4.5rem;
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+  text-transform: none;
+}
+
+.light-text {
+  display: block;
+  font-weight: 400;
+  opacity: 0.7;
+}
+
+.bold-text {
+  display: block;
+  font-weight: 700;
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 4rem;
+  margin-bottom: 10rem;
+}
+
+.footer-column {
+  display: flex;
+  flex-direction: column;
+  gap: 6rem;
+}
+
+.footer-section h3 {
+  font-size: 1.4rem;
+  margin-bottom: 1rem;
+  opacity: 0.6;
+  font-weight: 400;
+  text-transform: none;
+}
+
+.footer-section p {
+  font-size: 1.6rem;
+  margin-bottom: 0.5rem;
+  text-transform: none;
+}
+
+/* Footer links styling */
+.footer-section a {
+  color: var(--warm-off-black);
+  text-decoration: none;
+  transition: opacity 0.3s ease;
+}
+
+.footer-section a:hover {
+  opacity: 0.7;
+}
+
+.footer-logo {
+  width: 100%;
+  margin-top: 4rem;
+  opacity: 1; /* Changed from 0 to 1 to ensure visibility */
+}
+
+.footer-logo svg {
+  width: 100%;
+  height: auto;
+}
+
+/* Responsive Styles */
+@media (max-width: 1200px) {
+  .projects-container.grid-view {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .footer-header h2 {
+    font-size: 3.5rem;
+  }
+
+  .main-nav {
+    grid-column: 4 / 8;
+  }
+
+  .contact-link {
+    grid-column: 8 / 13;
+  }
+}
+
+@media (max-width: 768px) {
+  .projects-container.grid-view {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 2rem;
+  }
+
+  .footer-grid {
+    grid-template-columns: 1fr;
+    gap: 4rem;
+  }
+
+  .footer-header h2 {
+    font-size: 3rem;
+  }
+
+  .site-header .grid-container {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .logo-container {
+    grid-column: 1 / -1;
+  }
+
+  .main-nav {
+    grid-column: 1 / -1;
+  }
+
+  .contact-link {
+    grid-column: 1 / -1;
+    text-align: left;
+  }
+
+  .main-nav ul {
+    flex-direction: column;
+    gap: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .projects-container.grid-view {
+    grid-template-columns: 1fr;
+  }
+
+  .footer-header h2 {
+    font-size: 2.5rem;
+  }
+}

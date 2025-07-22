@@ -1,0 +1,9 @@
+name = "koni-anemone-duette"
+type = "javascript"
+account_id = "beda9587f344953368adfe08ff3bac4c4"  # your real ID
+workers_dev = true
+compatibility_date = "2024-07-18"
+
+[build]
+command = "npx @cloudflare/next-on-pages@1 build"
+

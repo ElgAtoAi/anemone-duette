@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>[V1] GSAP Scroll-Synced Video with Timed Cues</title>
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="format-detection" content="telephone=no"><link rel="stylesheet" href="./style.css">
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<!--
+GSAP Scroll-Synced Video with Timed Cues
+----------------------------------------
+
+Synchronized video playback using `GSAP` and `ScrollTrigger`, combined with cue-based headings that animate in and out based on defined video timecodes.
+
+### Encoding Matters
+
+Smooth scroll-based playback depends heavily on how the video is encoded. Accurate frame seeking requires frequent keyframes and fast metadata access. Without proper settings, playback can become inconsistent, particularly on devices with limited resources.
+
+When preparing videos for scroll-driven playback, `ffmpeg` offers a flexible and widely supported encoding approach. The settings below serve as a reliable starting point, but adjustments may be needed depending on the target resolution, performance requirements, or playback context.
+
+### Recommended FFmpeg Settings
+
+    ffmpeg -i input.mp4 -vf "format=yuv420p,scale=-1:1080" \
+    -c:v libx264 -profile:v main -level:v 5.1 -crf 20 \
+    -preset slow -tune animation -movflags +faststart \
+    -keyint_min 6 -g 6 -an output_scrub.mp4
+
+*   **`-keyint_min 6 -g 6`:** Forces a keyframe every 6 frames, enabling accurate frame seeking.
+*   **`-movflags +faststart`:** Places metadata at the beginning for immediate loading.
+*   **`-crf 20`:** Balances quality and file size. Lower values improve fidelity but increase size.
+*   **`-preset slow`:** Enhances compression efficiency by extending encoding time.
+*   **`-format yuv420p`:** Ensures playback compatibility across all major browsers.
+*   **`-an`:** Removes audio to reduce file size and avoid unnecessary overhead.
+
+### Performance Notes
+
+Playback performance depends on device capabilities, browser behavior, and encoding quality. Smooth scrubbing is more likely when resolution, bitrate, and keyframe intervals are adapted to the target platform.
+
+*   Keep resolution moderate (for example, 1080p) and framerate at or below 30 fps.
+*   Ensure frequent keyframes using `-g` and `-keyint_min`.
+*   Test across multiple browsers and platforms. Format support may vary.
+*   Consider using image sequences or sprite-based playback where video performance is limited.
+-->
+<div class="viewport-wrapper">
+  <div class="content-scroll">
+    <main class="main-content">
+      <section class="intro">
+        <h2>GSAP Scroll-Synced Video with Timed Cues</h2>
+        <p>Synchronized video playback using <code>GSAP</code> and <code>ScrollTrigger</code>, combined with cue-based headings that animate in and out based on defined video timecodes.</p>
+
+        <h3>Encoding Matters</h3>
+        <p>Smooth scroll-based playback depends heavily on how the video is encoded. Accurate frame seeking requires frequent keyframes and fast metadata access. Without proper settings, playback can become inconsistent, particularly on devices with limited resources.</p>
+
+        <p>When preparing videos for scroll-driven playback, <code>ffmpeg</code> offers a flexible and widely supported encoding approach. The settings below serve as a reliable starting point, but adjustments may be needed depending on the target resolution, performance requirements, or playback context.</p>
+
+        <h3>Recommended FFmpeg Settings</h3>
+        <pre><code>ffmpeg -i input.mp4 -vf "format=yuv420p,scale=-1:1080" \
+    -c:v libx264 -profile:v main -level:v 5.1 -crf 20 \
+    -preset slow -tune animation -movflags +faststart \
+    -keyint_min 6 -g 6 -an output_scrub.mp4</code></pre>
+
+        <ul>
+          <li><strong><code>-keyint_min 6 -g 6</code>:</strong> Forces a keyframe every 6 frames, enabling accurate frame seeking.</li>
+          <li><strong><code>-movflags +faststart</code>:</strong> Places metadata at the beginning for immediate loading.</li>
+          <li><strong><code>-crf 20</code>:</strong> Balances quality and file size. Lower values improve fidelity but increase size.</li>
+          <li><strong><code>-preset slow</code>:</strong> Enhances compression efficiency by extending encoding time.</li>
+          <li><strong><code>-format yuv420p</code>:</strong> Ensures playback compatibility across all major browsers.</li>
+          <li><strong><code>-an</code>:</strong> Removes audio to reduce file size and avoid unnecessary overhead.</li>
+        </ul>
+
+        <h3>Performance Notes</h3>
+        <p>How well scrubbing works can vary depending on the device, browser, and how the video was encoded. These tips can help improve playback, especially on less powerful hardware:</p>
+
+        <ul>
+          <li>Stick to a moderate resolution like 1080p, and keep the framerate around 30 fps or lower.</li>
+          <li>Use frequent keyframes with <code>-g</code> and <code>-keyint_min</code> to make seeking smoother.</li>
+          <li>Check performance across different browsers and devices, support for formats and playback behavior isn’t always consistent.</li>
+          <li>If video playback feels unreliable, it may be worth switching to sprite-based or image sequence alternatives.</li>
+        </ul>
+
+        <h3>Resources</h3>
+        <ul>
+          <li>
+            Video source: <a href="https://mixkit.co/free-stock-video/slow-aerial-tour-through-a-mist-covered-forest-28342/" target="_blank" rel="noopener">Mixkit – Slow aerial tour through a mist-covered forest</a>
+          </li>
+          <li>
+            Video encoder script: <a href="https://gist.github.com/arenagroove/691e583284132b079aaa7cecf66702a0" target="_blank" rel="noopener">Encode ScrubVideo (.ps1)</a>
+          </li>
+          <li>
+            Related discussion: <a href="https://gsap.com/community/forums/topic/32782-video-scroll-animation/" target="_blank" rel="noopener">GSAP Forum – Video scroll animation and performance tips</a>
+          </li>
+          <li>
+            <a href="https://codepen.io/luis-lessrain/pen/zxGjErP">[V2] GSAP Scroll-Synced Video with Timed Cues and Keyhole Effect</a>
+            </li>
+        </ul>
+      </section>
+
+      <section class="indicator">
+        <h3>Scroll Down<br>↓</h3>
+      </section>
+
+      <section>
+        <div id="video_01" class="sv-wrapper" data-duration="7.007">
+          <div class="sv-pin-container">
+            <video class="sv-video" tabindex="-1" width="1920" height="1080" alt="" preload="none" webkit-playsinline playsinline muted crossorigin src="https://www.lessrain.com/dev/videos/forest/forest.mp4" poster="https://www.lessrain.com/dev/videos/forest/forest_poster.webp"></video>
+
+            <div class="sv-cue" data-cue-start="0.5" data-cue-end="2.4">
+              <div class="sv-cue-content">
+                <h2>Above the Canopy</h2>
+                <p>A slow drift opens the scene.</p>
+              </div>
+            </div>
+
+            <div class="sv-cue" data-cue-start="2.8" data-cue-end="4.7">
+              <div class="sv-cue-content">
+                <h2>Stillness and Space</h2>
+                <p>The forest unfolds with quiet motion.</p>
+              </div>
+            </div>
+
+            <div class="sv-cue" data-cue-start="5.1" data-cue-end="7.0">
+              <div class="sv-cue-content">
+                <h2>Distant Ridges</h2>
+                <p>Mist and mountain shapes blend together.</p>
+              </div>
+            </div>
+
+            <div class="sv-preloader"></div>
+          </div>
+          <div class="sv-overlay-track">
+            <div class="sv-overlay-markers"></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="indicator">
+        <h3>↑<br>Scroll Up</h3>
+      </section>
+
+      <section>
+        <div class="spacer"></div>
+      </section>
+    </main>
+  </div>
+</div>
+
+<div class="resources-layer">
+  <div class="resources">
+    <a href="https://www.lessrain.com">Less Rain GmbH</a>
+    <a href="https://codepen.io/collection/bNyZkZ">JavaScript Codepen Collection</a>
+  </div>
+</div>
+<!-- partial -->
+  <script src='https://assets.codepen.io/573855/utils-v3.min.js?v=3'></script>
+<script src='https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js'></script>
+<script src='https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js'></script>
+<script src='https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollSmoother.min.js'></script><script  src="./script.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,142 @@
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 20 14% 4%;
+    --foreground: 60 9% 98%;
+    --card: 20 14% 4%;
+    --card-foreground: 60 9% 98%;
+    --popover: 20 14% 4%;
+    --popover-foreground: 60 9% 98%;
+    --primary: 60 9% 98%;
+    --primary-foreground: 24 9% 10%;
+    --secondary: 240 3% 11%;
+    --secondary-foreground: 60 9% 98%;
+    --muted: 240 3% 11%;
+    --muted-foreground: 240 5% 65%;
+    --accent: 264 71% 77%;
+    --accent-foreground: 60 9% 98%;
+    --destructive: 0 62% 30%;
+    --destructive-foreground: 60 9% 98%;
+    --border: 240 3% 11%;
+    --input: 240 3% 11%;
+    --ring: 264 71% 77%;
+    --radius: 0.5rem;
+  }
+
+  .light {
+    --background: 39 100% 97%;
+    --foreground: 20 14% 4%;
+    --card: 39 100% 97%;
+    --card-foreground: 20 14% 4%;
+    --popover: 39 100% 97%;
+    --popover-foreground: 20 14% 4%;
+    --primary: 20 14% 4%;
+    --primary-foreground: 60 9% 98%;
+    --secondary: 240 4% 93%;
+    --secondary-foreground: 240 5% 26%;
+    --muted: 240 4% 93%;
+    --muted-foreground: 240 3% 46%;
+    --accent: 264 71% 77%;
+    --accent-foreground: 20 14% 4%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 60 9% 98%;
+    --border: 240 5% 84%;
+    --input: 240 5% 84%;
+    --ring: 264 71% 77%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* Art Deco Typography */
+.font-deco {
+  font-family: var(--font-playfair);
+  font-weight: 700;
+  letter-spacing: 0.05em;
+}
+
+.font-caps {
+  font-family: var(--font-inter);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+}
+
+/* Glowing effects */
+.glow-accent {
+  box-shadow: 0 0 20px rgba(147, 106, 224, 0.3);
+  transition: box-shadow 0.3s ease;
+}
+
+.glow-accent:hover {
+  box-shadow: 0 0 40px rgba(147, 106, 224, 0.6);
+}
+
+/* Video styling */
+.hero-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -1;
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Animation utilities */
+.animate-count-up {
+  animation: countUp 2s ease-out forwards;
+}
+
+@keyframes countUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.6s ease-out forwards;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Parallax container */
+.parallax-container {
+  overflow-x: hidden;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: hsl(var(--muted));
+}
+
+::-webkit-scrollbar-thumb {
+  background: hsl(var(--accent));
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--accent) / 0.8);
+}
