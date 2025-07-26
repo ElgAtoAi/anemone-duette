@@ -1,0 +1,14 @@
+name = "anemone-astro"
+main = "./dist/_worker.js"
+compatibility_date = "2025-07-26"
+
+[build]
+command = "npm run build"
+
+[site]
+bucket = "./dist"
+
+[env.production]
+zone_id = "573a6a8a8d593436a3efbcbabd55652f"
+account_id = "beda958734495330ad8fe00ff3bacc4c"
+
